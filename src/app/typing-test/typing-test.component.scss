@@ -1,0 +1,116 @@
+.type-retro-title{
+  width: 400px;
+  margin-bottom: 20px;
+  margin-left: calc(50% - 200px);
+  margin-top: -20px;
+}
+
+.container-top-bar  {
+  margin: 0 5%;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 70px);
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.dificulty-text{
+  font-size: 20px;
+  font-weight: 400;
+  color: #6036aa;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.custom-button {
+  border: 1px solid #6036aa;
+}
+
+.selected-button {
+  border: none;
+}
+
+.count-down{
+  padding-left: 10px;
+}
+mat-card {
+  margin: 5%;
+  margin-top: 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-height: 150px;
+  overflow-y: scroll;
+  align-items: center;
+}
+mat-card-content{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+p {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.example-form {
+  margin: 5%;
+  height: 150px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.example-form-input {
+  height: 100%;
+  width: 100%;
+}
+.result-text{
+  font-size: 25px;
+  margin: 5% 0;
+  font-weight: 700;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #6036aa;
+}
+
+.test-score{
+  font-family:'Courier New', Courier, monospace;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.5;
+  color:green;
+}
+.test-score-text{
+  margin-left: 4px;
+  margin-right: 10%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #6036aa;
+}
+.result-card ::ng-deep{
+  overflow: hidden;
+  padding: 0%;
+  max-height: 500px;
+}
+
+.result-card-content ::ng-deep{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-game-button ::ng-deep{
+    color: #ffffff;
+    background-color: #6036aa; 
+}
+
+.view-score-button{
+  background-color: #6036aa;
+  margin-left: calc(50% - 40px);
+}

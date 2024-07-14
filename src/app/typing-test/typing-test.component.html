@@ -1,0 +1,101 @@
+<img src="assets/TypeRetroTitle.png" alt="TypeRetro" class="type-retro-title">
+<div class="container-top-bar">
+  <div>
+    <Span class="dificulty-text">Dificulty Level</Span>
+    <mat-grid-list cols="3" rowHeight="100px" style="margin-right: 50px;">
+      <mat-grid-tile>
+        <button
+          mat-raised-button
+          [color]="easySelected? 'primary' : 'basic'"
+          [disabled]="inputStart"
+          [ngClass]="{
+            'selected-button': easySelected,
+            'custom-button': !easySelected
+          }"
+          (click)="handleButtonClick(20)"
+        >
+          Easy
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button
+          mat-raised-button
+          [color]="mediumSelected? 'primary' : 'basic'"
+          [disabled]="inputStart"
+          [ngClass]="{
+            'selected-button': mediumSelected,
+            'custom-button': !mediumSelected
+          }"
+          (click)="handleButtonClick(50)"
+        >
+          Medium
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button
+          mat-raised-button
+          [color]="hardSelected? 'primary' : 'basic'"
+          [disabled]="inputStart"
+          [ngClass]="{
+            'selected-button': hardSelected,
+            'custom-button': !hardSelected
+          }"
+          (click)="handleButtonClick(100)"
+        >
+          Hard
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-progress-bar mode="determinate" [value]="barValue"></mat-progress-bar>
+  <countdown #cd [config]="{ leftTime: 30, demand: true, format: 's.S' }" />
+  <mat-icon aria-hidden="true" fontIcon="info" color="primary" (click)="openDialog()"></mat-icon>
+
+</div>
+
+<mat-card>
+  <mat-card-content>
+    @if (isLoading) {
+    <mat-spinner></mat-spinner>
+    }
+
+    <p>
+      @for (letter of paragraph.split(''); track $index) {<span
+        style="color: black; background-color: transparent"
+        >{{ letter }}</span
+      >}
+    </p>
+  </mat-card-content>
+</mat-card>
+@if (!viewScoreClicked) {
+<form class="example-form">
+  <mat-form-field class="example-form-input">
+    <textarea
+      matInput
+      placeholder="Type your text here"
+      [(ngModel)]="userInput"
+      name="userInput"
+      (input)="handleinput($event)"
+      [disabled]="inputDisable"
+    ></textarea>
+  </mat-form-field>
+  @if (inputDisable) {
+    <button  mat-raised-button color="primary"  (click)="typingTestResultHandler()" class="view-score-button">View Score</button>
+  }
+</form>
+} 
+@if (viewScoreClicked){
+<mat-card class="result-card">
+  <mat-card-content class="result-card-content">
+    <div class="result-text">Typing Test Result</div>
+    <div>
+      <span class="test-score">{{ wpm }}</span
+      ><span class="test-score-text">WPM</span><span class="test-score">{{ accuracy }}</span
+      ><span class="test-score-text">%ACCURACY</span>
+    </div>
+    <form>
+    <button  mat-raised-button color="primary" (click)="newGame()" class="new-game-button">New Game</button>
+  </form>
+  </mat-card-content>
+  </mat-card>
+}
