@@ -112,13 +112,13 @@ export class TypingTestComponent {
   }
 
   async getGenerateText(prompt: string) {
-    // try{
-    // const genText = await this.geminiModelService.generateText(prompt);
-    // this.paragraph = genText;
-    // this.isLoading = false;
-    // }catch(error){
-    //   console.log(error);
-    // }
+    try{
+    const genText = await this.geminiModelService.generateText(prompt);
+    this.paragraph = genText;
+    this.isLoading = false;
+    }catch(error){
+      console.log(error);
+    }
   }
   startProgressBar(): void {
     const intervalMilliseconds = 100;
