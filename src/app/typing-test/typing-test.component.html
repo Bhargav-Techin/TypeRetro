@@ -1,12 +1,12 @@
-<img src="assets/TypeRetroTitle.png" alt="TypeRetro" class="type-retro-title">
+<img src="assets/TypeRetroTitle.png" alt="TypeRetro" class="type-retro-title" />
 <div class="container-top-bar">
   <div>
     <Span class="dificulty-text">Dificulty Level</Span>
-    <mat-grid-list cols="3" rowHeight="100px" style="margin-right: 50px;">
+    <mat-grid-list cols="3" rowHeight="100px" class="dificulty-buttons">
       <mat-grid-tile>
         <button
           mat-raised-button
-          [color]="easySelected? 'primary' : 'basic'"
+          [color]="easySelected ? 'primary' : 'basic'"
           [disabled]="inputStart"
           [ngClass]="{
             'selected-button': easySelected,
@@ -20,7 +20,7 @@
       <mat-grid-tile>
         <button
           mat-raised-button
-          [color]="mediumSelected? 'primary' : 'basic'"
+          [color]="mediumSelected ? 'primary' : 'basic'"
           [disabled]="inputStart"
           [ngClass]="{
             'selected-button': mediumSelected,
@@ -34,7 +34,7 @@
       <mat-grid-tile>
         <button
           mat-raised-button
-          [color]="hardSelected? 'primary' : 'basic'"
+          [color]="hardSelected ? 'primary' : 'basic'"
           [disabled]="inputStart"
           [ngClass]="{
             'selected-button': hardSelected,
@@ -47,10 +47,27 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <mat-progress-bar mode="determinate" [value]="barValue"></mat-progress-bar>
-  <countdown #cd [config]="{ leftTime: 30, demand: true, format: 's.S' }" />
-  <mat-icon aria-hidden="true" fontIcon="info" color="primary" (click)="openDialog()"></mat-icon>
 
+  <div class="progress-bar-container">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="barValue"
+      class="progress-bar"
+    ></mat-progress-bar>
+    <span
+      ><countdown
+        #cd
+        [config]="{ leftTime: 30, demand: true, format: 's.S' }"
+      />s</span
+    >
+  </div>
+  <mat-icon
+    aria-hidden="true"
+    fontIcon="info"
+    color="primary"
+    (click)="openDialog()"
+    class="info-icon"
+  ></mat-icon>
 </div>
 
 <mat-card>
@@ -79,23 +96,39 @@
       [disabled]="inputDisable"
     ></textarea>
   </mat-form-field>
-  @if (inputDisable) {
-    <button  mat-raised-button color="primary"  (click)="typingTestResultHandler()" class="view-score-button">View Score</button>
+  @if (showViewScore) {
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="typingTestResultHandler()"
+    class="view-score-button"
+  >
+    View Score
+  </button>
   }
 </form>
-} 
-@if (viewScoreClicked){
+} @if (viewScoreClicked){
 <mat-card class="result-card">
   <mat-card-content class="result-card-content">
     <div class="result-text">Typing Test Result</div>
-    <div>
+    <div class="score-container">
       <span class="test-score">{{ wpm }}</span
-      ><span class="test-score-text">WPM</span><span class="test-score">{{ accuracy }}</span
-      ><span class="test-score-text">%ACCURACY</span>
+      ><span class="test-score-text">WPM</span>
+      <div>
+        <span class="test-score">{{ accuracy }}</span
+        ><span class="test-score-text">%ACCURACY</span>
+      </div>
     </div>
     <form>
-    <button  mat-raised-button color="primary" (click)="newGame()" class="new-game-button">New Game</button>
-  </form>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="newGame()"
+        class="new-game-button"
+      >
+        New Game
+      </button>
+    </form>
   </mat-card-content>
-  </mat-card>
+</mat-card>
 }

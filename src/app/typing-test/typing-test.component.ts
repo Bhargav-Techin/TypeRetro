@@ -48,7 +48,8 @@ export class TypingTestComponent {
   barValue: number = 0;
   firstInputStart: boolean = true;
   inputStart: boolean = false;
-  inputDisable: boolean = false;
+  inputDisable: boolean = true;
+  showViewScore: boolean = false;
   progressBarInterval: any;
   recentInputedWord: string = '';
   correctCharType: number = 0;
@@ -102,7 +103,7 @@ export class TypingTestComponent {
       this.paragraph = 'Loading...';
       this.isLoading = true;
       this.firstInputStart = true;
-      this.inputDisable = false;
+      this.inputDisable = true;
       clearInterval(this.progressBarInterval);
       this.barValue = 0;
       this.countdown.restart();
@@ -116,6 +117,7 @@ export class TypingTestComponent {
     const genText = await this.geminiModelService.generateText(prompt);
     this.paragraph = genText;
     this.isLoading = false;
+    this.inputDisable = false;
     }catch(error){
       console.log(error);
     }
@@ -133,6 +135,7 @@ export class TypingTestComponent {
         clearInterval(this.progressBarInterval);
         this.firstInputStart = true;
         this.inputDisable = true;
+        this.showViewScore = true;
         // console.log(this.paragraph);
         // console.log(this.userInput);
       }
@@ -177,8 +180,8 @@ export class TypingTestComponent {
   }
   typingTestResultHandler() {
     this.viewScoreClicked = true;
-    this.wpm = ((this.correctCharType * 2) / 5).toFixed(1);
-    this.accuracy = ((this.correctCharType / (this.correctCharType + this.wrongCharType)) * 100).toFixed(2);
+    this.wpm = ((this.correctCharType * 2) / 5).toFixed(0);
+    this.accuracy = ((this.correctCharType / (this.correctCharType + this.wrongCharType)) * 100).toFixed(0);
   }
   newGame() {
     window.location.reload();
