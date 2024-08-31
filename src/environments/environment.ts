@@ -1,3 +1,7 @@
+// import dotenv from "dotenv";
+
+// dotenv.config({ path: "./.env" });
+
 export const environment = {
-    googleAiApiKey: 'AIzaSyB00gTmRIHxSoZ4_jbeKAF-4zENiMqLAtw',
+    googleAiApiKey: process.env["API_KEY"],
 };
