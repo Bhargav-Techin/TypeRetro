@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
