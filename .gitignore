@@ -44,5 +44,4 @@ Thumbs.db
 src/environments/environment.ts
 src/environments/environment.development.ts
 
-typing-speed-calculator\src\environments\environment.development.ts
-typing-speed-calculator\src\environments\environment.ts
+/environments
